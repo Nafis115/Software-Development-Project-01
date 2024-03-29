@@ -2,9 +2,7 @@
 using namespace std;
 int main()
 {
-
-    cout << "Tumi ki valo aso" << endl;
-    cout<<"hey"<<endl;
+    cout << "Welcome to Reboot team" << endl;
 
     return 0;
 }
