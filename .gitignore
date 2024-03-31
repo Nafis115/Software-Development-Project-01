@@ -1,20 +1,66 @@
-.exe
-.DS_Store
+# Prerequisites
+*.d
 
-# Images
-images/avatars/
-images/captchas/
-images/smileys/
-images/member_photos/
-images/signature_attachments/
-images/pm_attachments/
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-# For security do not publish the following files
-system/expressionengine/config/database.php
-system/expressionengine/config/config.php
+# Precompiled Headers
+*.gch
+*.pch
 
-# Caches
-sized/
-thumbs/
-_thumbs/
-*/expressionengine/cache/*
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.vscode
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.vscode
