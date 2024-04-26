@@ -23,14 +23,15 @@ public:
     {
         return email;
     }
-    int get_pass(){
+    int get_pass()
+    {
         return pass;
     }
 };
 
-
 int main()
 {
+    Admin admin;
     cout << "\n\n";
     cout << "*****************************************" << endl;
     cout << "*                                       *" << endl;
@@ -42,33 +43,47 @@ int main()
     cout << "Option 1: Registration" << endl;
     cout << "Option 2: Login" << endl;
     cout << "Option 3: Exit" << endl;
-    cout << "\n\n";
-
+    cout << "\n"
+         << endl;
     while (true)
     {
         int op;
         cin >> op;
         if (op == 1)
         {
-            cout<<"Welcome to our Registration process"<<endl;
+            cout << "Welcome to our Registration process" << endl;
             string email;
             int pass;
             cout << "Enter you email" << endl;
             cin >> email;
             cout << "Enter you password" << endl;
-            Admin a(email,pass);
-            cout<<" Your Registration Successfull"<<endl;
+            cin >> pass;
+            Admin a(email, pass);
+            if (admin.get_email() == email)
+            {
+                cout << "Your Registration Successfull" << endl;
+            }
+            else
+            {
+                cout << "Enter wrong Email" << endl;
+                cout << "Please try again later" << endl;
+            }
         }
         else if (op == 2)
         {
-            cout<<"Welcome To Login Page"<<endl;
+            cout << "Welcome To Login Page" << endl;
+
             string email;
-            cout<<"Enter you Email"<<endl;
-            cin>>email;
+            cout << "Enter you Email" << endl;
+            cin >> email;
             int pass;
-            cout<<"Enter your pass"<<endl;
-            cin>>pass;
-            
+            cout << "Enter your pass" << endl;
+            cin >> pass;
+
+            if (admin.get_email() == email && admin.get_pass())
+            {
+                cout << "Login successfull" << endl;
+            }
         }
         else
         {
@@ -76,7 +91,6 @@ int main()
             break;
         }
     }
- 
 
     return 0;
 }
