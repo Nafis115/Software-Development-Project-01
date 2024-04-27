@@ -1,32 +1,21 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
+#include <windows.h>
 using namespace std;
-
-class Admin
-{
-private:
+class User{
+    public:
     string email;
-    int pass;
-
-public:
-    Admin()
-    {
-        email = "demo@gmail.com";
-        pass = 1234;
+    int id;
+    string vehicle_id;
+    User(){
+        email=" ";
+        id=0;
+        vehicle_id=" ";
     }
-
-    Admin(string email, int pass)
-    {
-        this->email = email;
-        this->pass = pass;
-    }
-
-    string get_email()
-    {
-        return email;
-    }
-    int get_pass()
-    {
-        return pass;
+    User(string email,int id, string vehicle_id){
+        this->email=email;
+        this->id=id;
+        this->vehicle_id=vehicle_id;
+    
     }
 };
 
@@ -64,9 +53,11 @@ bool check_admin(string email, int pass)
     return false;
 }
 
-int main()
+
+
+
+void inter_face()
 {
-    Admin admin;
     cout << "\n\n";
     cout << "*****************************************" << endl;
     cout << "*                                       *" << endl;
@@ -74,53 +65,114 @@ int main()
     cout << "*                                       *" << endl;
     cout << "*****************************************" << endl;
     cout << "\n\n";
+    Sleep(1000);
 
     cout << "Option 1: Registration" << endl;
     cout << "Option 2: Login" << endl;
     cout << "Option 3: Exit" << endl;
-    cout << "\n"
-         << endl;
-    while (true)
+    cout << "\n"  << endl;
+}
+
+void registration_method()
+{
+    cout << "Welcome to our Registration process" << endl;
+    string email;
+    int pass;
+    cout << "Enter your email: ";
+    cin >> email;
+    cout << "Enter your password: ";
+    cin >> pass;
+    s_infor(email, pass);
+    printf("Registration is processign.");
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    cout << ("\n");
+    cout << "Your Registration Successful" << endl;
+    Sleep(1500);
+    system("CLS");
+    inter_face();
+
+    
+}
+
+void login_method()
+{
+    cout << "Welcome To Login Page" << endl;
+    string email;
+    cout << "Enter your Email: ";
+    cin >> email;
+    int pass;
+    cout << "Enter your password: ";
+    cin >> pass;
+    printf("Please Wait for login.");
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    printf(".");
+    Sleep(1000);
+    printf("\n");
+    if (check_admin(email, pass))
     {
+        cout << "Login successful" << endl;
+        Sleep(1500);
+    }
+    else
+    {
+
+        cout << "Incorrect email or password. Please try again." << endl;
+        Sleep(1500);
+    }
+
+}
+
+
+
+
+
+
+
+
+int main()
+{
+    inter_face();
+
+    while (5)
+    {
+        cout << "Enter your option:" << endl;
         int op;
         cin >> op;
         if (op == 1)
         {
-            cout << "Welcome to our Registration process" << endl;
-            string email;
-            int pass;
-            cout << "Enter your email: ";
-            cin >> email;
-            cout << "Enter your password: ";
-            cin >> pass;
-            s_infor(email, pass);
-            cout << "Your Registration Successful" << endl;
+            registration_method();
         }
         else if (op == 2)
         {
-            cout << "Welcome To Login Page" << endl;
-            string email;
-            cout << "Enter your Email: ";
-            cin >> email;
-            int pass;
-            cout << "Enter your password: ";
-            cin >> pass;
-
-            if (check_admin(email, pass))
-            {
-                cout << "Login successful" << endl;
-            }
-            else
-            {
-                cout << "Incorrect email or password. Please try again." << endl;
-            }
+            login_method();
+            inter_face();
+            
         }
         else
         {
+            
             cout << "Thanks for visiting our parking system" << endl;
+            Sleep(1500); 
             break;
         }
     }
+    system("CLS");
+
+
+
+
 
     return 0;
 }
