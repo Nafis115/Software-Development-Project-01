@@ -3,28 +3,28 @@
 using namespace std;
 class User{
     public:
-    string email;
+    string name;
     int id;
     string vehicle_id;
     User(){
-        email=" ";
+        name=" ";
         id=0;
         vehicle_id=" ";
     }
-    User(string email,int id, string vehicle_id){
-        this->email=email;
+    User(string name,int id, string vehicle_id){
+        this->name=name;
         this->id=id;
         this->vehicle_id=vehicle_id;
     
     }
 };
 
-void s_infor(string email, int pass)
+void s_infor(string name, int pass)
 {
     ofstream file("admin.txt", ios::app);
     if (file.is_open())
     {
-        file << email << " " << pass << endl;
+        file << name << " " << pass << endl;
         file.close();
     }
     else
@@ -33,16 +33,16 @@ void s_infor(string email, int pass)
     }
 }
 
-bool check_admin(string email, int pass)
+bool check_admin(string name, int pass)
 {
     ifstream file("admin.txt");
     if (file.is_open())
     {
-        string stored_email;
+        string stored_name;
         int stored_pass;
-        while (file >> stored_email >> stored_pass)
+        while (file >> stored_name >> stored_pass)
         {
-            if (stored_email == email && stored_pass == pass)
+            if (stored_name == name && stored_pass == pass)
             {
                 file.close();
                 return true;
@@ -75,14 +75,14 @@ void inter_face()
 
 void registration_method()
 {
-    cout << "Welcome to our Registration process" << endl;
-    string email;
+    cout << "Welcome to our Registration process: " << endl;
+    string name;
     int pass;
-    cout << "Enter your email: ";
-    cin >> email;
+    cout << "Enter your name: ";
+    cin >> name;
     cout << "Enter your password: ";
     cin >> pass;
-    s_infor(email, pass);
+    s_infor(name, pass);
     printf("Registration is processign.");
     printf(".");
     Sleep(1000);
@@ -104,9 +104,9 @@ void registration_method()
 void login_method()
 {
     cout << "Welcome To Login Page" << endl;
-    string email;
-    cout << "Enter your Email: ";
-    cin >> email;
+    string name;
+    cout << "Enter your name: ";
+    cin >> name;
     int pass;
     cout << "Enter your password: ";
     cin >> pass;
@@ -120,15 +120,16 @@ void login_method()
     printf(".");
     Sleep(1000);
     printf("\n");
-    if (check_admin(email, pass))
+    if (check_admin(name, pass))
     {
         cout << "Login successful" << endl;
         Sleep(1500);
+        system("CLS");
     }
     else
     {
 
-        cout << "Incorrect email or password. Please try again." << endl;
+        cout << "Incorrect name or password. Please try again." << endl;
         Sleep(1500);
     }
 
@@ -147,7 +148,7 @@ int main()
 
     while (5)
     {
-        cout << "Enter your option:" << endl;
+        cout << "Enter your option: ";
         int op;
         cin >> op;
         if (op == 1)
