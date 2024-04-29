@@ -31,4 +31,7 @@
 *.exe
 *.out
 *.app
-*.txt
+admin.txt
+# Ignore Visual Studio Code specific files
+.vscode/
+
