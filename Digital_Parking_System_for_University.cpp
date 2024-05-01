@@ -208,10 +208,6 @@ void load_space(int mat[ROW][COL])
         }
         load_space.close();
     }
-    else
-    {
-        cout << "Error to open file for load save parking space" << endl;
-    }
 }
 void show_parking_space(int mat[ROW][COL])
 {
