@@ -34,5 +34,9 @@
 admin.txt
 # Ignore Visual Studio Code specific files
 .vscode/
+save_space.txt
+parking_details.txt
+Owner_details.txt
+
 
 
