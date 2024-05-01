@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 #include <windows.h>
+#include <conio.h>
+
 using namespace std;
 bool login = false;
 const int ROW = 10;
@@ -16,7 +18,23 @@ void loading_print()
     Sleep(1000);
     printf("\n");
 }
+void inter_face()
+{
+    cout << "\n\n";
+    cout << "*****************************************" << endl;
+    cout << "*                                       *" << endl;
+    cout << "* Welcome to university parking system *" << endl;
+    cout << "*                                       *" << endl;
+    cout << "*****************************************" << endl;
+    cout << "\n\n";
+    Sleep(1000);
 
+    cout << "Option 1: Registration" << endl;
+    cout << "Option 2: Login" << endl;
+    cout << "Option 3: Exit" << endl;
+    cout << "\n"
+         << endl;
+}
 void admin_information(string email, int pass)
 {
     ofstream file("admin.txt", ios::app);
@@ -51,24 +69,6 @@ bool check_admin(string email, int pass)
     return false;
 }
 
-void inter_face()
-{
-    cout << "\n\n";
-    cout << "*****************************************" << endl;
-    cout << "*                                       *" << endl;
-    cout << "* Welcome to university parking system *" << endl;
-    cout << "*                                       *" << endl;
-    cout << "*****************************************" << endl;
-    cout << "\n\n";
-    Sleep(1000);
-
-    cout << "Option 1: Registration" << endl;
-    cout << "Option 2: Login" << endl;
-    cout << "Option 3: Exit" << endl;
-    cout << "\n"
-         << endl;
-}
-
 void registration_method()
 
 {
@@ -76,12 +76,30 @@ void registration_method()
     system("CLS");
     cout << "Welcome to our Registration process: " << endl;
     string email;
-    int pass;
+    string pass;
+    char ch;
+
     cout << "Enter your email: ";
     cin >> email;
     cout << "Enter your password: ";
-    cin >> pass;
-    admin_information(email, pass);
+    do
+    {
+        ch = getch();
+
+        if (ch != 13 && ch != 8)
+        {
+            pass.push_back(ch);
+            cout << '*';
+        }
+        else if (ch == 8 && !pass.empty())
+        {
+            pass.pop_back();
+            cout << "\b \b"; // Erase the character from the screen
+        }
+    } while (ch != 13);
+
+    admin_information(email, stoi(pass));
+    cout << endl;
     printf("Registration is processing");
     loading_print();
     Sleep(2000);
@@ -100,14 +118,30 @@ void login_method()
     string email;
     cout << "Enter your email: ";
     cin >> email;
-    int pass;
+    string pass;
+    char ch;
     cout << "Enter your password: ";
-    cin >> pass;
+    do
+    {
+        ch = getch();
+
+        if (ch != 13 && ch != 8)
+        {
+            pass.push_back(ch);
+            cout << '*';
+        }
+        else if (ch == 8 && !pass.empty())
+        {
+            pass.pop_back();
+            cout << "\b \b";
+        }
+    } while (ch != 13);
+    cout<<endl;
     printf("Please Wait for login");
     loading_print();
     system("cls");
     Sleep(2000);
-    if (check_admin(email, pass))
+    if (check_admin(email, stoi(pass)))
     {
         cout << "Login successful" << endl;
         login = true;
@@ -230,14 +264,14 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
             owner << id << " " << coupon_num << endl;
             cout << "The vehicle is parked at this position(" << r << " " << c << ") successfully" << endl;
             cout << "Please print this Coupon Number: " << coupon_num << endl;
-            cout << "And give to the owner for again verification" << endl<<endl;
+            cout << "And give to the owner for again verification" << endl
+                 << endl;
         }
         else
         {
             cout << "Unable to open file to save owner details" << endl;
         }
         owner.close();
-        
     }
 }
 
@@ -360,7 +394,7 @@ int main()
                         show_parking_space(mat);
                         cout << "Enter parking space(ex:(r c)): ";
                         cin >> r >> c;
-                        cout<<"Please wait. We are looking for empty space.";
+                        cout << "Please wait. We are looking for empty space.";
                         loading_print();
                         Sleep(1500);
                         system("cls");
@@ -407,7 +441,7 @@ int main()
                         system("cls");
                     }
                     else if (opt == 3)
-                    {  
+                    {
                         system("cls");
                         show_parking_space(mat);
                         system("pause");
