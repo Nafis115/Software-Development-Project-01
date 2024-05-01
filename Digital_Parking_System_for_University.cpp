@@ -3,7 +3,6 @@
 #include <conio.h>
 
 using namespace std;
-bool login = false;
 const int ROW = 10;
 const int COL = 20;
 
@@ -110,7 +109,7 @@ void registration_method()
     inter_face();
 }
 
-void login_method()
+bool login_method()
 {
     Sleep(1000);
     system("CLS");
@@ -136,7 +135,7 @@ void login_method()
             cout << "\b \b";
         }
     } while (ch != 13);
-    cout<<endl;
+    cout << endl;
     printf("Please Wait for login");
     loading_print();
     system("cls");
@@ -144,18 +143,20 @@ void login_method()
     if (check_admin(email, stoi(pass)))
     {
         cout << "Login successful" << endl;
-        login = true;
         cout << endl;
         Sleep(2000);
         system("pause");
         system("cls");
+        return true;
     }
     else
     {
 
         cout << "Incorrect email or password. Please try again." << endl;
+        return false;
         Sleep(2000);
     }
+    return false;
 }
 
 void admin_interface_pannel()
@@ -367,8 +368,8 @@ int main()
         }
         else if (op == 2)
         {
-            login_method();
-            if (login)
+
+            if (login_method())
             {
 
                 while (true)
