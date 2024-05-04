@@ -19,18 +19,13 @@ void loading_print()
 }
 void inter_face()
 {
-    cout << "\n\n";
-    cout << "*****************************************" << endl;
-    cout << "*                                       *" << endl;
-    cout << "* Welcome to university parking system *" << endl;
-    cout << "*                                       *" << endl;
-    cout << "*****************************************" << endl;
+    cout << "\n\n\n\n\t\t\t\t\t\t---------->  UNIVARSITY VEHICLE PARKING SYSTEM  <----------" << endl;
     cout << "\n\n";
     Sleep(1000);
 
-    cout << "Option 1: Registration" << endl;
-    cout << "Option 2: Login" << endl;
-    cout << "Option 3: Exit" << endl;
+    cout << "\t\t\t\t\t\t\t\t Option 1: Registration" << endl;
+    cout << "\t\t\t\t\t\t\t\t Option 2: Login" << endl;
+    cout << "\t\t\t\t\t\t\t\t Option 3: Exit" << endl;
     cout << "\n"
          << endl;
 }
@@ -62,6 +57,11 @@ bool check_admin(string email, int pass)
                 file.close();
                 return true;
             }
+            else
+            {
+                cout << "\t\t\t\t\t\t\t\tYou Enter wrong Email and Password" << endl;
+                cout << "\t\t\t\t\t\t\t\tPlease try again with valid email and password" << endl;
+            }
         }
         file.close();
     }
@@ -73,14 +73,15 @@ void registration_method()
 {
     Sleep(1000);
     system("CLS");
-    cout << "Welcome to our Registration process: " << endl;
+    cout << "\n\n\n\n\t\t\t\t\t\tWELCOME TO OUR REGISTRATION PROCESS" << endl
+         << endl;
     string email;
     string pass;
     char ch;
 
-    cout << "Enter your email: ";
+    cout << "\t\t\t\t\t\tEnter your email: ";
     cin >> email;
-    cout << "Enter your password: ";
+    cout << "\t\t\t\t\t\tEnter your password: ";
     do
     {
         ch = getch();
@@ -99,11 +100,12 @@ void registration_method()
 
     admin_information(email, stoi(pass));
     cout << endl;
-    printf("Registration is processing");
+    printf("\t\t\t\t\t\tRegistration is processing");
     loading_print();
     Sleep(2000);
     system("CLS");
-    cout << "Your Registration Successful" << endl;
+    cout << "\n\n\n\n\t\t\t\t\t\tYOUR REGISTRATION SUCCESSFUL " << endl
+         << endl;
     system("pause");
     system("CLS");
     inter_face();
@@ -113,13 +115,13 @@ bool login_method()
 {
     Sleep(1000);
     system("CLS");
-    cout << "Welcome To Login Page" << endl;
+    cout << "\n\n\n\n\t\t\t\t\t\t\t\tWELCOME TO LOGIN PAGE" << endl;
     string email;
-    cout << "Enter your email: ";
+    cout << "\t\t\t\t\t\t\t\tEnter your email: ";
     cin >> email;
     string pass;
     char ch;
-    cout << "Enter your password: ";
+    cout << "\t\t\t\t\t\t\t\tEnter your password: ";
     do
     {
         ch = getch();
@@ -136,43 +138,40 @@ bool login_method()
         }
     } while (ch != 13);
     cout << endl;
-    printf("Please Wait for login");
+    printf("\t\t\t\t\t\t\t\tPlease Wait for login");
     loading_print();
     system("cls");
     Sleep(2000);
     if (check_admin(email, stoi(pass)))
     {
-        cout << "Login successful" << endl;
-        cout << endl;
-        Sleep(2000);
+        cout << "\n\n\n\n\t\t\t\t\t\t\t\tLOGIN SUCCESSFULL" << endl;
+        cout << endl
+             << endl;
         system("pause");
         system("cls");
         return true;
     }
-    else
-    {
-
-        cout << "Incorrect email or password. Please try again." << endl;
-        return false;
-        Sleep(2000);
-    }
     return false;
 }
 
-void admin_interface_pannel()
+void admin_interface_panel()
 {
-    cout << "*****************************************" << endl;
-    cout << "      Welcome to Our Admin Panel         " << endl;
-    cout << "*****************************************" << endl;
-
-    cout << "Please Select an Option:" << endl;
-    cout << "Option 1: Park a Vehicle" << endl;
-    cout << "Option 2: Retrieve a Vehicle" << endl;
-    cout << "Option 3: View Parking Spaces in University" << endl;
-
-    cout << "Option 4: Exit" << endl;
-    cout << "*****************************************" << endl;
+    cout << "\n\n";
+    cout << "\t\t\t\t\t\t\t***************************************************" << endl;
+    cout << "\t\t\t\t\t\t\t             WELCOME TO OUR ADMIN PANEL            " << endl;
+    cout << "\t\t\t\t\t\t\t***************************************************" << endl;
+    cout << endl;
+    cout << "\t\t\t\t\t\t\t---------------------------------------------------" << endl;
+    cout << "\t\t\t\t\t\t\tOption 1: Park a Vehicle" << endl;
+    cout << "\t\t\t\t\t\t\t---------------------------------------------------" << endl;
+    cout << "\t\t\t\t\t\t\tOption 2: Retrieve a Vehicle" << endl;
+    cout << "\t\t\t\t\t\t\t---------------------------------------------------" << endl;
+    cout << "\t\t\t\t\t\t\tOption 3: View Parking Spaces in University" << endl;
+    cout << "\t\t\t\t\t\t\t---------------------------------------------------" << endl;
+    cout << "\t\t\t\t\t\t\tOption 4: Exit" << endl;
+    cout << "\t\t\t\t\t\t\t***************************************************" << endl;
 }
+
 void save_parking_space(int mat[ROW][COL])
 {
     ofstream save_space("save_space.txt");
@@ -209,25 +208,22 @@ void load_space(int mat[ROW][COL])
         load_space.close();
     }
 }
-void show_parking_space(int mat[ROW][COL])
-{
-    for (int i = 0; i < ROW; i++)
-    {
-        for (int j = 0; j < COL; j++)
-        {
-            if (mat[i][j] == 0)
-            {
-                cout << "."
-                     << " ";
-            }
-            else
-            {
-                cout << "X"
-                     << " ";
+void show_parking_space(int mat[ROW][COL]) {
+    cout << "\n\n\n";
+    cout << "\t\t\t\t\t\t\t\tParking Space Status:" << endl;
+    cout << "\t\t\t\t\t\t\t\t----------------------" << endl;
+    for (int i = 0; i < ROW; i++) {
+        cout << "\t\t\t\t\t\t\t\t";
+        for (int j = 0; j < COL; j++) {
+            if (mat[i][j] == 0) {
+                cout << ". "; 
+            } else {
+                cout << "X ";
             }
         }
         cout << endl;
     }
+    cout << "\t\t\t\t\t\t\t\t----------------------" << endl;
 }
 void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
 {
@@ -242,7 +238,7 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
         }
         else
         {
-            cout << "The parking space is already booked" << endl;
+            cout << "\t\t\t\t\t\t\tThe parking space is already booked" << endl;
         }
     }
     if (flag)
@@ -259,14 +255,14 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
         if (owner.is_open())
         {
             owner << id << " " << coupon_num << endl;
-            cout << "The vehicle is parked at this position(" << r << " " << c << ") successfully" << endl;
-            cout << "Please print this Coupon Number: " << coupon_num << endl;
-            cout << "And give to the owner for again verification" << endl
+            cout << "\t\t\t\t\t\t\tThe vehicle is parked at this position(" << r << " " << c << ") successfully" << endl;
+            cout << "\t\t\t\t\t\t\tPlease print this Coupon Number: " << coupon_num << endl;
+            cout << "\t\t\t\t\t\t\tAnd give to the owner for again verification" << endl
                  << endl;
         }
         else
         {
-            cout << "Unable to open file to save owner details" << endl;
+            cout << "\t\t\t\t\t\t\tUnable to open file to save owner details" << endl;
         }
         owner.close();
     }
@@ -284,7 +280,7 @@ bool space_finder(int vehicle_id)
         {
             if (vehicle_id == s_vehicle_id)
             {
-                cout << "Enter this position(" << s_r << " " << s_c << ") for retrieve this vehicle" << endl
+                cout << "\t\t\t\t\t\t\tEnter this position(" << s_r << " " << s_c << ") for retrieve this vehicle" << endl
                      << endl;
                 found = true;
             }
@@ -296,7 +292,7 @@ bool space_finder(int vehicle_id)
     }
     else
     {
-        cout << "Error: cannot open file" << endl;
+        cout << "\t\t\t\t\t\t\tError: cannot open file" << endl;
         return false;
     }
     space_finder.close();
@@ -305,7 +301,7 @@ bool space_finder(int vehicle_id)
     rename("temp.txt", "parking_details.txt");
     if (!found)
     {
-        cout << "You entered a wrong Vehicle Id. Please try again with a valid Vehicle Id." << endl;
+        cout << "\t\t\t\t\t\t\tYou entered a wrong Vehicle Id. Please try again with a valid Vehicle Id." << endl;
     }
     return found;
 }
@@ -333,7 +329,7 @@ bool retrieve_vehicle(int id, int coupon_num)
     }
     else
     {
-        cout << "Cannot open file to retrieve vehicle" << endl;
+        cout << "\t\t\t\t\t\t\tCannot open file to retrieve vehicle" << endl;
         return false;
     }
     owner_details.close();
@@ -342,24 +338,26 @@ bool retrieve_vehicle(int id, int coupon_num)
     rename("temp.txt", "Owner_details.txt");
     if (!found)
     {
-        cout << "Wrong id or coupon number. Please try again with valid credentials." << endl;
+        cout << "\t\t\t\t\t\t\tWrong id or coupon number. Please try again with valid credentials." << endl;
     }
     return found;
 }
 
 int main()
 {
+    system("cls");
     int mat[ROW][COL] = {0};
     load_space(mat);
     inter_face();
 
     while (true)
     {
-        cout << "Enter your option: ";
+        cout << "\t\t\t\t\t\t\t\t Enter your option: ";
         int op;
         cin >> op;
         if (op == 1)
         {
+
             registration_method();
         }
         else if (op == 2)
@@ -370,28 +368,28 @@ int main()
 
                 while (true)
                 {
-                    admin_interface_pannel();
+                    admin_interface_panel();
 
                     int opt;
-                    cout << "Enter your Option: ";
+                    cout << "\t\t\t\t\t\t\tEnter your Option: ";
                     cin >> opt;
                     if (opt == 1)
                     {
                         system("cls");
                         string name, type;
                         int o_id, v_id, r, c;
-                        cout << "Enter Vehicle Owner Name: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Owner Name: ";
                         cin >> name;
-                        cout << "Enter Vehicle Owner Id: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Owner Id: ";
                         cin >> o_id;
-                        cout << "Enter Vehicle Type: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Type: ";
                         cin >> type;
-                        cout << "Enter Vehicle Id: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Id: ";
                         cin >> v_id;
                         show_parking_space(mat);
-                        cout << "Enter parking space(ex:(r c)): ";
+                        cout << "\t\t\t\t\t\t\tEnter parking space(ex:(r c)): ";
                         cin >> r >> c;
-                        cout << "Please wait. We are looking for empty space.";
+                        cout << "\t\t\t\t\t\t\tPlease wait. We are looking for empty space.";
                         loading_print();
                         Sleep(1500);
                         system("cls");
@@ -403,18 +401,18 @@ int main()
                     {
                         system("cls");
                         int owner_id, vehicle_id, r, c, coupon_num;
-                        cout << "Enter Vehicle Owner Id: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Owner Id: ";
                         cin >> owner_id;
-                        cout << "Enter Vehicle Id: ";
+                        cout << "\t\t\t\t\t\t\tEnter Vehicle Id: ";
                         cin >> vehicle_id;
                         if (space_finder(vehicle_id))
                         {
                             system("pause");
                             system("cls");
                             cout << endl;
-                            cout << "Enter parking space Where you park this Vehicle(ex:(r c)): ";
+                            cout << "\t\t\t\t\t\t\tEnter parking space Where you park this Vehicle(ex:(r c)): ";
                             cin >> r >> c;
-                            cout << "Enter the unique coupon id: ";
+                            cout << "\t\t\t\t\t\t\tEnter the unique coupon id: ";
                             cin >> coupon_num;
                             if (retrieve_vehicle(owner_id, coupon_num))
                             {
@@ -424,11 +422,11 @@ int main()
                                     {
                                         mat[r][c] = 0;
                                         save_parking_space(mat);
-                                        cout << "Vehicle retrieve successfull" << endl;
+                                        cout << "\t\t\t\t\t\t\tVehicle retrieve successfull" << endl;
                                     }
                                     else
                                     {
-                                        cout << "This space(" << r << " " << c << ")"
+                                        cout << "\t\t\t\t\t\t\tThis space(" << r << " " << c << ")"
                                              << "is already Booked" << endl;
                                     }
                                 }
@@ -446,15 +444,15 @@ int main()
                     }
                     else if (opt == 4)
                     {
-                        cout << "You are exiting from Admin panel" << endl;
+                        cout << "\t\t\t\t\t\t\tYou are exiting from Admin panel" << endl;
                         Sleep(2000);
                         system("CLS");
                         break;
                     }
                     else
                     {
-                        cout << "Invalid option" << endl;
-                        cout << "Please try again" << endl;
+                        cout << "\t\t\t\t\t\t\tInvalid option" << endl;
+                        cout << "\t\t\t\t\t\t\tPlease try again" << endl;
                         Sleep(2000);
                         system("CLS");
                     }
@@ -464,12 +462,19 @@ int main()
             system("CLS");
             inter_face();
         }
-        else
+        else if (op == 3)
         {
-
-            cout << "Thanks for visiting our parking system" << endl;
+            system("cls");
+            cout << "n\n\n\n\t\t\t\t\t\t\t\tThanks for visiting our parking system" << endl;
             Sleep(2000);
             break;
+        }
+        else
+        {
+            cout << "\t\t\t\t\t\t\tInvalid option" << endl;
+            cout << "\t\t\t\t\t\t\tPlease try again" << endl;
+            Sleep(2000);
+            system("CLS");
         }
     }
     system("CLS");
