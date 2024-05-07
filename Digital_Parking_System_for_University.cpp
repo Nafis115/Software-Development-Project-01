@@ -19,7 +19,12 @@ void loading_print()
 }
 void inter_face()
 {
-    cout << "\n\n\n\n\t\t\t\t\t\t---------->  UNIVARSITY VEHICLE PARKING SYSTEM  <----------" << endl;
+    cout << "\n\n\n\n";
+    cout << "\t\t\t\t\t\t\t\t*****************************************" << endl;
+    cout << "\t\t\t\t\t\t\t\t*                                       *" << endl;
+    cout << "\t\t\t\t\t\t\t\t* WELCOME TO UNIVERISTY PARKING SYSTEM *" << endl;
+    cout << "\t\t\t\t\t\t\t\t*                                       *" << endl;
+    cout << "\t\t\t\t\t\t\t\t*****************************************" << endl;
     cout << "\n\n";
     Sleep(1000);
 
@@ -31,7 +36,9 @@ void inter_face()
 }
 void admin_information(string email, int pass)
 {
+
     ofstream file("admin.txt", ios::app);
+
     if (file.is_open())
     {
         file << email << " " << pass << endl;
@@ -208,16 +215,22 @@ void load_space(int mat[ROW][COL])
         load_space.close();
     }
 }
-void show_parking_space(int mat[ROW][COL]) {
+void show_parking_space(int mat[ROW][COL])
+{
     cout << "\n\n\n";
     cout << "\t\t\t\t\t\t\t\tParking Space Status:" << endl;
     cout << "\t\t\t\t\t\t\t\t----------------------" << endl;
-    for (int i = 0; i < ROW; i++) {
+    for (int i = 0; i < ROW; i++)
+    {
         cout << "\t\t\t\t\t\t\t\t";
-        for (int j = 0; j < COL; j++) {
-            if (mat[i][j] == 0) {
-                cout << ". "; 
-            } else {
+        for (int j = 0; j < COL; j++)
+        {
+            if (mat[i][j] == 0)
+            {
+                cout << ". ";
+            }
+            else
+            {
                 cout << "X ";
             }
         }
