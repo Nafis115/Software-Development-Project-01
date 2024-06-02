@@ -9,12 +9,11 @@ const int COL = 20;
 void loading_print()
 {
     Sleep(650);
-    printf(".");
-    Sleep(1000);
-    printf(".");
-    Sleep(1000);
-    printf(".");
-    Sleep(1000);
+    for (int i = 0; i < 4; i++)
+    {
+        printf(".");
+        Sleep(1000);
+    }
     printf("\n");
 }
 void inter_face()
@@ -22,7 +21,7 @@ void inter_face()
     cout << "\n\n\n\n";
     cout << "\t\t\t\t\t\t\t\t*****************************************" << endl;
     cout << "\t\t\t\t\t\t\t\t*                                       *" << endl;
-    cout << "\t\t\t\t\t\t\t\t* WELCOME TO UNIVERISTY PARKING SYSTEM *" << endl;
+    cout << "\t\t\t\t\t\t\t\t* WELCOME TO UNIVERSITY PARKING SYSTEM *" << endl;
     cout << "\t\t\t\t\t\t\t\t*                                       *" << endl;
     cout << "\t\t\t\t\t\t\t\t*****************************************" << endl;
     cout << "\n\n";
@@ -101,7 +100,7 @@ void registration_method()
         else if (ch == 8 && !pass.empty())
         {
             pass.pop_back();
-            cout << "\b \b"; // Erase the character from the screen
+            cout << "\b \b"; 
         }
     } while (ch != 13);
 
@@ -151,7 +150,7 @@ bool login_method()
     Sleep(2000);
     if (check_admin(email, stoi(pass)))
     {
-        cout << "\n\n\n\n\t\t\t\t\t\t\t\tLOGIN SUCCESSFULL" << endl;
+        cout << "\n\n\n\n\t\t\t\t\t\t\t\tLOGIN SUCCESSFUL" << endl;
         cout << endl
              << endl;
         system("pause");
@@ -314,7 +313,7 @@ bool space_finder(int vehicle_id)
     rename("temp.txt", "parking_details.txt");
     if (!found)
     {
-        cout << "\t\t\t\t\t\t\tYou entered a wrong Vehicle Id. Please try again with a valid Vehicle Id." << endl;
+        cout << "\t\t\t\t\t\t\tYou entered a wrong Vehicle Id. Please try again with a valid Vehicle Id" << endl;
     }
     return found;
 }
@@ -435,7 +434,7 @@ int main()
                                     {
                                         mat[r][c] = 0;
                                         save_parking_space(mat);
-                                        cout << "\t\t\t\t\t\t\tVehicle retrieve successfull" << endl;
+                                        cout << "\t\t\t\t\t\t\tVehicle retrieve successful" << endl;
                                     }
                                     else
                                     {
