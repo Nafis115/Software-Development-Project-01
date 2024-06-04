@@ -1,26 +1,28 @@
+
+
 #include <bits/stdc++.h>
 #include <windows.h>
 #include <conio.h>
 using namespace std;
-const int ROW = 10;
-const int COL = 20;
+const int ROW = 10; // globally declare row
+const int COL = 20; // globally declare column
 
-void loading_print()
+void loading_print() // design print
 {
     Sleep(650);
     for (int i = 0; i < 4; i++)
     {
-        printf(".");
+        cout << ".";
         Sleep(1000);
     }
-    printf("\n");
+    cout << endl;
 }
-void inter_face()
+void inter_face() // inter face method
 {
     cout << "\n\n\n\n";
     cout << "\t\t\t\t\t*****************************************" << endl;
     cout << "\t\t\t\t\t*                                       *" << endl;
-    cout << "\t\t\t\t\t* WELCOME TO UNIVERSITY PARKING SYSTEM *" << endl;
+    cout << "\t\t\t\t\t* WELCOME TO UNIVERSITY PARKING SYSTEM  *" << endl;
     cout << "\t\t\t\t\t*                                       *" << endl;
     cout << "\t\t\t\t\t*****************************************" << endl;
     cout << "\n\n";
@@ -32,7 +34,7 @@ void inter_face()
     cout << "\n"
          << endl;
 }
-void admin_information(string email, int pass)
+void admin_information(string email, int pass) // save admin information method
 {
 
     ofstream file("admin.txt", ios::app);
@@ -48,7 +50,7 @@ void admin_information(string email, int pass)
     }
 }
 
-bool check_admin(string email, int pass)
+bool check_admin(string email, int pass) // admin information check
 {
     ifstream file("admin.txt");
     if (file.is_open())
@@ -62,18 +64,13 @@ bool check_admin(string email, int pass)
                 file.close();
                 return true;
             }
-            else
-            {
-                cout << "\t\t\t\t\tYou Enter wrong Email and Password" << endl;
-                cout << "\t\t\t\t\tPlease try again with valid email and password" << endl;
-            }
         }
         file.close();
     }
     return false;
 }
 
-void registration_method()
+void registration_method() // registration method
 
 {
     Sleep(1000);
@@ -99,16 +96,18 @@ void registration_method()
         else if (ch == 8 && !pass.empty())
         {
             pass.pop_back();
-            cout << "\b \b"; 
+            cout << "\b \b";
         }
     } while (ch != 13);
 
-    admin_information(email, stoi(pass));
+    admin_information(email, stoi(pass)); // save admin infomation method call
     cout << endl;
     printf("\t\t\t\t\tRegistration is processing");
     loading_print();
     Sleep(2000);
+
     system("CLS");
+
     cout << "\n\n\n\n\t\t\t\t\tYOUR REGISTRATION SUCCESSFUL " << endl
          << endl;
     system("pause");
@@ -116,7 +115,7 @@ void registration_method()
     inter_face();
 }
 
-bool login_method()
+bool login_method() // admin login method
 {
     Sleep(1000);
     system("CLS");
@@ -127,6 +126,9 @@ bool login_method()
     string pass;
     char ch;
     cout << "\t\t\t\t\tEnter your password: ";
+
+    // for password encrypted method start
+
     do
     {
         ch = getch();
@@ -142,12 +144,15 @@ bool login_method()
             cout << "\b \b";
         }
     } while (ch != 13);
+
+    // for password encrypted method end
+
     cout << endl;
     printf("\t\t\t\t\tPlease Wait for login");
     loading_print();
     system("cls");
     Sleep(2000);
-    if (check_admin(email, stoi(pass)))
+    if (check_admin(email, stoi(pass))) // admin check method call
     {
         cout << "\n\n\n\n\t\t\t\t\t\tLOGIN SUCCESSFUL" << endl;
         cout << endl
@@ -156,10 +161,17 @@ bool login_method()
         system("cls");
         return true;
     }
+    else
+    {
+
+        cout << "\t\t\t\t\tYou Enter wrong Email and Password" << endl;
+        cout << "\t\t\t\t\tPlease try again with valid email and password" << endl;
+        system("pause");
+    }
     return false;
 }
 
-void admin_interface_panel()
+void admin_interface_panel() // admin interface
 {
     cout << "\n\n";
     cout << "\t\t\t\t\t***************************************************" << endl;
@@ -177,9 +189,9 @@ void admin_interface_panel()
     cout << "\t\t\t\t\t***************************************************" << endl;
 }
 
-void save_parking_space(int mat[ROW][COL])
+void save_parking_space(int mat[ROW][COL]) // parking space saving method
 {
-    ofstream save_space("save_space.txt");
+    ofstream save_space("save_space.txt"); // file for save spaces
     if (save_space.is_open())
     {
         for (int i = 0; i < ROW; i++)
@@ -198,7 +210,7 @@ void save_parking_space(int mat[ROW][COL])
     }
 }
 
-void load_space(int mat[ROW][COL])
+void load_space(int mat[ROW][COL]) // load space method
 {
     ifstream load_space("save_space.txt");
     if (load_space.is_open())
@@ -213,7 +225,7 @@ void load_space(int mat[ROW][COL])
         load_space.close();
     }
 }
-void show_parking_space(int mat[ROW][COL])
+void show_parking_space(int mat[ROW][COL]) // view parking spaces
 {
     cout << "\n\n\n";
     cout << "\t\t\t\t\tParking Space Status:" << endl;
@@ -236,10 +248,10 @@ void show_parking_space(int mat[ROW][COL])
     }
     cout << "\t\t\t\t\t----------------------" << endl;
 }
-void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
+void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL]) // vehicle parking method
 {
     bool flag = false;
-    if (r >= 0 && r < ROW && c >= 0 && c < COL)
+    if (r >= 0 && r < ROW && c >= 0 && c < COL) // access matrix
     {
         if (mat[r][c] == 0)
         {
@@ -259,7 +271,7 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
         {
             store_space << vehicle_id << " " << r << " " << c << endl;
         }
-        srand(time(nullptr));
+        srand(time(nullptr)); // seed of the random number generator
         int coupon_num;
         coupon_num = rand();
         ofstream owner("Owner_details.txt", ios::app);
@@ -279,7 +291,7 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL])
     }
 }
 
-bool space_finder(int vehicle_id)
+bool space_finder(int vehicle_id) // looking for space which input by user
 {
     ifstream space_finder("parking_details.txt");
     ofstream temp("temp.txt");
@@ -317,10 +329,10 @@ bool space_finder(int vehicle_id)
     return found;
 }
 
-bool retrieve_vehicle(int id, int coupon_num)
+bool retrieve_vehicle(int id, int coupon_num) // vehicle retrieve vehicle method
 {
-    ifstream owner_details("Owner_details.txt");
-    ofstream temp("temp.txt");
+    ifstream owner_details("Owner_details.txt"); // owner details file open
+    ofstream temp("temp.txt");                   // open runtime temp file
     int s_id, s_coupon_num;
     bool found = false;
     if (owner_details.is_open() && temp.is_open())
@@ -332,10 +344,9 @@ bool retrieve_vehicle(int id, int coupon_num)
                 if (coupon_num == s_coupon_num)
                 {
                     found = true;
-                    continue;
+                    continue; // check this error
                 }
             }
-            temp << s_id << " " << s_coupon_num << endl;
         }
     }
     else
@@ -354,11 +365,11 @@ bool retrieve_vehicle(int id, int coupon_num)
     return found;
 }
 
-int main()  // main function start
+int main() // main function start
 {
     system("cls");
-    int mat[ROW][COL] = {0};
-    load_space(mat); //load save space s
+    int mat[ROW][COL] = {0}; // initially matrix 0
+    load_space(mat);         // load save space
     inter_face();
 
     while (true)
@@ -408,7 +419,7 @@ int main()  // main function start
                         system("pause");
                         system("cls");
                     }
-                    else if (opt == 2) // vehicle retreive process start
+                    else if (opt == 2) // vehicle retrieve process start
                     {
                         system("cls");
                         int owner_id, vehicle_id, r, c, coupon_num;
@@ -433,7 +444,7 @@ int main()  // main function start
                                     {
                                         mat[r][c] = 0;
                                         save_parking_space(mat);
-                                        cout << "\t\t\t\t\tVehicle retrieve successful" << endl;
+                                        cout << "\t\t\t\t\tVehicle retrieved successfully" << endl;
                                     }
                                     else
                                     {
@@ -455,7 +466,7 @@ int main()  // main function start
                     }
                     else if (opt == 4)
                     {
-                        cout << "\t\t\t\t\tYou are exiting from Admin panel" << endl; // exit from admin pannel
+                        cout << "\t\t\t\t\tYou are exiting from Admin panel" << endl; // exit from admin panel
                         Sleep(2000);
                         system("CLS");
                         break;
@@ -471,12 +482,12 @@ int main()  // main function start
             }
 
             system("CLS");
-            inter_face();
+            inter_face(); // registration interface
         }
         else if (op == 3)
         {
             system("cls");
-            cout << "n\n\n\n\t\t\t\t\tThanks for visiting our parking system" << endl; //exit from registration proces
+            cout << "n\n\n\n\t\t\t\t\tThanks for visiting our parking system" << endl; // exit from registration process
             Sleep(2000);
             break;
         }
