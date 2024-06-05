@@ -315,11 +315,12 @@ bool space_finder(int vehicle_id, int &s_r, int &s_c) // looking for space which
 {
     ifstream space_finder("parking_details.txt");
     bool found = false;
+    int owner_id;
     if (space_finder.is_open())
     {
-        while (space_finder >> vehicle_id >> s_r >> s_c)
+        while (space_finder >> owner_id >> s_r >> s_c)
         {
-            if (vehicle_id == vehicle_id)
+            if (owner_id == vehicle_id)
             {
                 cout << "\t\t\t\t\tEnter this position(" << s_r << " " << s_c << ") for retrieve this vehicle" << endl
                      << endl;
@@ -333,7 +334,7 @@ bool space_finder(int vehicle_id, int &s_r, int &s_c) // looking for space which
         cout << "\t\t\t\t\tError: cannot open file" << endl;
     }
     space_finder.close();
-    if (found==false)
+    if (found == false)
     {
         cout << "\t\t\t\t\tYou entered a wrong Vehicle Id. Please try again with a valid Vehicle Id" << endl;
     }
