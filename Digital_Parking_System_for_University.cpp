@@ -293,7 +293,7 @@ void park_a_vehicle(int id, int vehicle_id, int r, int c, int mat[ROW][COL]) // 
         }
         srand(time(nullptr)); // seed of the random number generator
         int coupon_num;
-        coupon_num = rand();
+        coupon_num = rand(); //random number generator
         ofstream owner("Owner_details.txt", ios::app);
         if (owner.is_open())
         {
@@ -510,8 +510,8 @@ int main() // main function start
                                     }
                                     else
                                     {
-                                        cout << "\t\t\t\t\tThis space(" << r << " " << c << ")"
-                                             << "is already Booked" << endl;
+                                        cout << "\t\t\t\t\tThis parking space(" << r << " " << c << ")"
+                                             << "is already empty" << endl;
                                     }
                                 }
                             }
